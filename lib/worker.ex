@@ -229,6 +229,7 @@ defmodule Organizer.Worker do
     )
 
     result
+    |> Result.of()
     |> try_save_step(worker_state.step)
     |> Result.chain(&handle_step_result(ref, &1, worker_state, state))
     |> Result.fold(
